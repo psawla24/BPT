@@ -14,32 +14,26 @@ body {
 }
 
 #title {
-	font-size: 82px;
-	color: white;
+	font-size: 90px;
+	color: #fefcff;
 	font-family: 'Ubuntu', sans-serif;
-	font-weight: 500;
+	font-weight: 400;
 }
 
-#buttonOne {
+#buttonOne, #buttonTwo {
 	height: 150px;
 	width: 270px;
 	font-size: 52px;
 	color: #444444;
+	background-color: #f0f8ff;
 	border-radius: 10px;
-}
-
-#buttonTwo {
-	height: 150px;
-	width: 270px;
-	font-size: 52px;
-	color: #444444;
-	border-radius: 8px;
-}
-
-#buttonAlignmentt {
-	margin-top: 13%;
 	font-family: 'Ubuntu', sans-serif;
-	font-weight: 500;
+	font-weight: 700;
+	box-shadow: inset 2px 2px 2px 2px #bbb;
+}
+
+button:hover {
+	background-color: #dddddd !important;
 }
 
 p {
@@ -48,10 +42,17 @@ p {
 
 li {
 	display: inline-block;
-	color: #fff;
+	color: #fefcff;
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 25px;
 	font-weight: 300;
+}
+
+li:hover:nth-of-type(2n+1) {
+	color: #446394;
+	font-family: 'Ubuntu', sans-serif;
+	font-style: italic;
+	font-size: 36px;
 }
 
 ul {
@@ -65,7 +66,6 @@ ul {
 	margin: 0 0 0 -50%;
 	left: 50%;
 }
-
 
 
 #theMiddle {
@@ -82,13 +82,32 @@ ul {
 	left: 49%;
 }
 
+span {
+	font-size: 40px;
+	font-family: Verdana;
+	color: #aaa;
+}
 
+.submitButton {
+	color: #308330;
+	font-size: 23px;
+	font-weight: 700;
+}
+
+.modal-header {
+	text-align: center;
+	font-size: 50px;
+	font-weight: 700;
+}
 
 #signupModal {
-
-	
+	color: #444;
+	font-family: 'Ubuntu';
+	font-size: 20px;
 }
 
 #signinModal {
-	
+	color: #444;
+	font-family: 'Ubuntu';
+	font-size: 20px;
 }

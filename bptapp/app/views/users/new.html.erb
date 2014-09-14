@@ -1,9 +1,13 @@
+
+
+<!--- SIGN UP MODAL SIGN UP MODAL SIGN UP MODAL SIGN UP MODAL SIGN UP MODAL  -->
+
 <div id="signupModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
 <div class="modal-dialog">
 <div class="modal-content">
 <div class="modal-header">
 
-<h1>Sign Up!</h1>
+<p>Sign Up!</p>
 </div>
 
 <div class="modal-body">
@@ -28,14 +32,15 @@
 	<%= f.text_field :password, class: 'form-control', placeholder: "Password" %>
 	</div>
 
+	<div class="submitButton">
 	<%= f.submit 'Sign Me Up!' %>
+	</div>
 
 </div>
 
 	<div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button class="btn btn-default" data-toggle="modal" data-target="#signinModal" data-dismiss="modal">Already A User?</button>
-
     </div>
 </div>
 </div>
@@ -45,15 +50,14 @@
 
 
 
-
-
+<!-- LOG IN MODAL LOG IN MODAL LOG IN MODAL LOG IN MODAL LOG IN MODAL LOG IN MODAL --> 
 
 <div id="signinModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
 <div class="modal-dialog">
 <div class="modal-content">
 <div class="modal-header">
 
-<h1>Sign In!</h1>
+<p>Sign In!</p>
 </div>
 
 <div class="modal-body">
@@ -64,12 +68,15 @@
 
     <div class="form-group">
     <%= f.label :password %> <%= f.password_field :password, class: 'form-control', placeholder: "Password" %>
-    </div>
+    </div><br/>
 
+    <div class="submitButton">
     <%= f.submit "Sign In!" %>
+    </div>
 </div>
 
 <div class="modal-footer">
+	<br/>
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     <button class="btn btn-default" data-toggle="modal" data-target="#signupModal" data-dismiss="modal">New User?</button>
 </div>
@@ -82,17 +89,15 @@
 
 
 
-
-
-
+<!-- PAGE ELEMENTS PAGE ELEMENTS PAGE ELEMENTS PAGE ELEMENTS PAGE ELEMENTS -->
 
 <div id="theHeader">
-	<p id="title">BackPackTrack</p>
+	<p id="title">Back <span>&#x261E</span> Pack <span>&#x261E</span> Track</p>
 </div>
 
 <div id="theMiddle">
 		<div class="row">
-		<div class="col-lg-6 col-lg-offset-3 text-center" id="buttonAlignment">
+		<div class="col-lg-6 col-lg-offset-3 text-center">
 
 			<button id="buttonOne" class="btn btn-default" data-toggle="modal" data-target="#signupModal">Sign Up</button>
 			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -106,11 +111,18 @@
 <div id="theFooter">
 
 		<ul>
-			<li>How It Works &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
+			<li>How It Works</li>
 
-			<li>Top Destinations &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
+			<li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
 
-			<li>Contact Us &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
+			<li>Top Destinations</li>
+
+			<li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
+
+
+			<li>Contact Us</li>
+
+			<li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
 
 			<li>FAQ</li>
 		</ul>
