@@ -1,10 +1,12 @@
 class SessionsController < ApplicationController
 
   def new
+    flash.clear
   end
 
+  
   def create
-    flash[:error] = nil
+    flash.clear
   	begin
   	  user = User.find_by({email: params[:session][:email]})
     rescue
@@ -19,6 +21,7 @@ class SessionsController < ApplicationController
   	  render 'new'
     end
   end
+
 
   def destroy
   	log_out

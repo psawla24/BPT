@@ -6,14 +6,13 @@ class User
   field :last, type: String
   field :email, type: String
   field :password_digest, type: String
+  
 
+  has_many :messages
 
 	attr_reader :password
 
-	# validates_presence_of :first, :last, :email, :password_digest, :message => "Please enter something!"
-	# validates_uniqueness_of :email, :message => "Already Taken!"
-	
-
+	validates_presence_of :first, :message => "Enter your first name"
 
 	def password=(new_password)
 		self.password_digest = BCrypt::Password.create(new_password)

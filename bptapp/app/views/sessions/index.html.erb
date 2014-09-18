@@ -1,14 +1,32 @@
-<span>
-	<% if logged_in? %> 
-		<p>You're logged in</p>
-		<%= link_to "Log out", log_out_path, method: :delete %>: 
-	<% else %>
-		<p>You're logged out</p>
-		<%= link_to "Log in", sessions_path %><br>
-		<%= link_to "Sign up", signup_path %>
-	<% end %>
-		<br></span>
+<!-- IF YOU SEE THIS PAGE, CHANGE root_path AT BOTTOM OF PAGE TO signup_path -->
 
-<br>
+	<% if logged_in? %> 
+	<div id="loggedInPage">
+		<p>Welcome back,  <%= current_user.first %> <%= current_user.last %>!</p>
+	</div>
+
+	<div>
+		<%= button_to "Message Center", allmsgs_path %>
+	</div>
+
+	<div>
+		<%= button_to "Send A Message!", sendmsg_path %>
+	</div>
+
+	<div id="logoutButton">		
+		<%= link_to "Log out", log_out_path, method: :delete %>
+	</div>
+
+
+	<% else %>
+		<p style="color:white;font-size:40px;">You're logged out!</p>
+		<!-- <%= link_to "Log in", sessions_path %><br> -->
+		<button style="height:100px; width:400px; font-size:35px;">
+		<%= link_to "Return To Homepage", root_path %>
+		</button>
+	<% end %>
+
+
+
 
 

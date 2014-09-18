@@ -31,4 +31,15 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  ActionMailer::Base.smtp_settings = {
+  :user_name => 'brunette24',
+  :password => 'Ladyinred24',
+  :domain => 'http://poojasawla.com',
+  :address => 'smtp.sendgrid.net',
+  :port => 25,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
+
 end
