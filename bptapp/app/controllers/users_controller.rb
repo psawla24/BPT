@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     @user = User.new(params.require(:user).permit(:first, :last, :email, :password))
       if @user.save
         log_in(@user)
-        UserNotifier.send_signup_email(@user).deliver
         redirect_to root_path
       else
         render 'new'

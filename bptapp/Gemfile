@@ -17,8 +17,6 @@ gem 'mongoid', github: 'mongoid/mongoid'
 
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'sendgrid'
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
