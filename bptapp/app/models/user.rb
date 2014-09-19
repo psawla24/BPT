@@ -2,11 +2,17 @@ require 'bcrypt'
 
 class User
   include Mongoid::Document
+  include Geocoder::Model::Mongoid
+
+  geocoded_by :address
+  after_validation :geocode
+
   field :first, type: String
   field :last, type: String
   field :email, type: String
   field :password_digest, type: String
-  
+  field :coordinates, type: Array
+
 
   has_many :messages
 

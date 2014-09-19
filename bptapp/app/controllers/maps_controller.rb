@@ -11,5 +11,9 @@ class MapsController < ApplicationController
   			render 'new'
   		end
   	end
+
+    def test
+      @map = Map.all
+    end
 end
 

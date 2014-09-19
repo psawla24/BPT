@@ -24,10 +24,26 @@ Rails.application.routes.draw do
   get 'messages/all', to: 'messages#index', as: :allmsgs
   post 'messages/all', to: 'messages#index'
 
+
+
   get 'maps/new', to: 'maps#new', as: :mymap
   post 'maps/new', to: 'maps#create'
 
   post 'maps/', to: 'maps#create'
+
+  get 'testout' => 'maps#test'
+
+  # get 'maps/locations', to: 'maps#locations', as: :lcns
+  # post 'maps/locations', to: 'maps#locations'
+
+
+
+
+
+  # get 'maps/test', to: 'maps#test', as: :mymap
+  # post 'maps/test', to: 'maps#create'
+
+  # post 'maps/', to: 'maps#create'
  
 
   
