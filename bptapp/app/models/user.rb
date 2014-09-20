@@ -7,13 +7,15 @@ class User
   field :last, type: String
   field :email, type: String
   field :password_digest, type: String
+  field :latitude, type: Float
+  field :longitude, type: Float
 
   has_many :messages
   has_many :maps
 
 	attr_reader :password
 
-	validates_presence_of :first, :message => "Enter your first name"
+	# validates_presence_of :first, :message => "Enter your first name"
 
 	def password=(new_password)
 		self.password_digest = BCrypt::Password.create(new_password)

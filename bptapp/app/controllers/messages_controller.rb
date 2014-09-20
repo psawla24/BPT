@@ -9,10 +9,9 @@ class MessagesController < ApplicationController
   end
 
   def create
-    # @message = Message.create(params[:content])
-    @message = Message.new(params.require(:message).permit(:subject, :content))
+    @message = Message.new(params.require(:message).permit(:subject, :content, :user))
     if @message.save
-    	redirect_to allmsgs_path
+    	redirect_to root_path
     else
     	render 'new'
     end

@@ -6,19 +6,23 @@
 	</div>
 
 	<div>
-		<%= button_to "Message Center", allmsgs_path %>
+		<%= link_to "View Your Messages!", messages_path %>
+	</div>
+
+	<div>
+		<%= link_to "View Your Map!", maps_path %>
 	</div>
 
 	<div id="logoutButton">		
-		<%= link_to "Log out", log_out_path, method: :delete %>
+		<%= link_to "Log out", sessions_path, method: :delete %>
 	</div>
 
 
 	<% else %>
 		<p style="color:white;font-size:40px;">You're logged out!</p>
-		<!-- <%= link_to "Log in", sessions_path %><br> -->
+		<%#= link_to "Log in", sessions_path %><br>
 		<button style="height:100px; width:400px; font-size:35px;">
-		<%= link_to "Return To Homepage", root_path %>
+		<%= link_to "Return To Homepage", sessions_path %>
 		</button>
 	<% end %>
 

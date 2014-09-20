@@ -4,8 +4,14 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+
+  def show
+    @user = User.find(params[:id])
+  end
+
+
   def create 
-    @user = User.new(params.require(:user).permit(:first, :last, :email, :password))
+    @user = User.new(params.require(:user).permit(:first, :last, :email, :password, :latitude, :longitude, :maps_ids => []))
       if @user.save
         log_in(@user)
         redirect_to root_path
@@ -13,7 +19,24 @@ class UsersController < ApplicationController
         render 'new'
       end
   end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update_attributes(params.require(:user).permit(:latitude => [], :longitude => []))
+      redirect_to root_path
+    else
+      render 'edit'
+    end
+  end
 end
+
+
+
 
 
 
