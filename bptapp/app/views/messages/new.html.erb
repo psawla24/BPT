@@ -1,0 +1,17 @@
+<p style="color:white; font-size:32px; text-align:center">Compose Message</p>
+
+<%= form_for @message do |f| %>
+
+<div class="input-group input-group-lg">
+  <span class="input-group-addon"></span>
+	<%= f.text_field :subject, class: 'form-control', placeholder: "Subject" %>
+</div>
+
+<div class="input-group input-group-lg">
+  <span class="input-group-addon"></span>
+	<%= f.text_field :content, class: 'form-control', placeholder: "Email's Body" %>
+</div>
+ 
+ <button type="submit" class="btn btn-lg btn-success">SUBMIT!</button>
+
+<% end %>
