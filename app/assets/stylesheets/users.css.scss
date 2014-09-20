@@ -1,0 +1,113 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+	background: -webkit-linear-gradient(rgba(0,0,0,0.60),rgba(0,0,0,0.60)), url('/assets/backpackers.jpg');
+	background: -moz-linear-gradient(rgba(0,0,0,0.60),rgba(0,0,0,0.60)), url('/assets/backpackers.jpg');
+	background: linear-gradient(rgba(0,0,0,0.60),rgba(0,0,0,0.60)), url('/assets/backpackers.jpg');
+	background-size: 1440px 900px;
+	background-repeat: no-repeat;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+#title {
+	font-size: 90px;
+	color: #fefcff;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 400;
+}
+
+#buttonOne, #buttonTwo {
+	height: 150px;
+	width: 270px;
+	font-size: 52px;
+	color: #444444;
+	background-color: #f0f8ff;
+	border-radius: 10px;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 700;
+	box-shadow: inset 2px 2px 2px 2px #bbb;
+}
+
+button:hover {
+	background-color: #dddddd !important;
+}
+
+.signUpIn {
+	text-align: center;
+}
+
+li {
+	display: inline-block;
+	color: #fefcff;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 25px;
+	font-weight: 300;
+}
+
+li:hover:nth-of-type(2n+1) {
+	color: #446394;
+	font-family: 'Ubuntu', sans-serif;
+	font-style: italic;
+	font-size: 36px;
+}
+
+ul {
+	text-align: center;
+}
+
+#theHeader {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	margin: 0 0 0 -50%;
+	left: 50%;
+}
+
+
+#theMiddle {
+	position: fixed;
+	width: 100%;
+	top: 40%;
+}
+
+#theFooter {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	margin: 0 0 0 -50%;
+	left: 49%;
+}
+
+span {
+	font-size: 40px;
+	font-family: Verdana;
+	color: #aaa;
+}
+
+.submitButton {
+	color: #308330;
+	font-size: 23px;
+	font-weight: 700;
+}
+
+.modal-header {
+	text-align: center;
+	font-size: 50px;
+	font-weight: 700;
+}
+
+#signupModal {
+	color: #444;
+	font-family: 'Ubuntu';
+	font-size: 20px;
+}
+
+#signinModal {
+	color: #444;
+	font-family: 'Ubuntu';
+	font-size: 20px;
+}
