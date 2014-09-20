@@ -4,7 +4,7 @@
 
 body {
 	background: -webkit-linear-gradient(rgba(0,0,0,0.60),rgba(0,0,0,0.60)), url('/assets/backpackers.jpg');
-	background: -moz-linear-gradient(rgba(0,0,0,0.60),rgba(0,0,0,0.60)), image-url('backpackers.jpg');
+	background: -moz-linear-gradient(rgba(0,0,0,0.60),rgba(0,0,0,0.60)), url('/assets/backpackers.jpg');
 	background: linear-gradient(rgba(0,0,0,0.60),rgba(0,0,0,0.60)), url('/assets/backpackers.jpg');
 	background-size: 1440px 900px;
 	background-repeat: no-repeat;
