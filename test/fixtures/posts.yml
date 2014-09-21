@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rating: MyString
+  location: MyString
+  lengthofstay: MyString
+  hostel: MyString
+  hostelreview: MyString
+  attraction: MyString
+  attractionreview: MyString
+  overall: MyString
+
+two:
+  rating: MyString
+  location: MyString
+  lengthofstay: MyString
+  hostel: MyString
+  hostelreview: MyString
+  attraction: MyString
+  attractionreview: MyString
+  overall: MyString

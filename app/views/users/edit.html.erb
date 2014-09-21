@@ -24,7 +24,6 @@
 <body>
 
 
-
 <%= form_for @user do |f| %>
 	<div class="form-group">
 	<%= f.label :latitude %><br>
@@ -38,6 +37,10 @@
 	<%= f.submit 'Save my Lat/Lng!' %>
 	</div>
 <% end %>
+
+<div>
+	<%= link_to "Go To My Dashboard", user_path %>
+</div>
 
 
 </body>

@@ -6,15 +6,19 @@
 	</div>
 
 	<div>
-		<%= link_to "View Your Messages!", messages_path %>
+		<%#= link_to "View Your Messages!", messages_path %>
 	</div>
 
 	<div>
-		<%= link_to "View Your Map!", maps_path %>
+		<%#= link_to "View Your Map!", maps_path %>
 	</div>
 
 	<div>
-		<%= link_to "Users Path!", users_path %>
+		<%#= link_to "Users Path!", users_path %>
+	</div>
+
+	<div>
+		<%= link_to "Go To My Dashboard", user_path(current_user) %>
 	</div>
 
 	<div id="logoutButton">		
@@ -26,11 +30,6 @@
 		<p style="color:white;font-size:40px;">You're logged out!</p>
 		<%#= link_to "Log in", sessions_path %><br>
 		<button style="height:100px; width:400px; font-size:35px;">
-		<%= link_to "Return To Homepage", sessions_path %>
+		<%= link_to "Return To Homepage", new_session_path %>
 		</button>
 	<% end %>
-
-
-
-
-

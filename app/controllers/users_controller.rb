@@ -11,10 +11,10 @@ class UsersController < ApplicationController
 
 
   def create 
-    @user = User.new(params.require(:user).permit(:first, :last, :email, :password, :latitude, :longitude, :maps_ids => []))
+    @user = User.new(params.require(:user).permit(:first, :last, :email, :password, :latitude, :longitude))
       if @user.save
-        log_in(@user)
-        redirect_to root_path
+#        log_in(@user)
+        redirect_to new_session_path
       else
         render 'new'
       end
@@ -27,8 +27,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    if @user.update_attributes(params.require(:user).permit(:latitude => [], :longitude => []))
-      redirect_to root_path
+    if @user.update_attributes(params.require(:user).permit(:latitude, :longitude))
+      redirect_to user_path
     else
       render 'edit'
     end

@@ -1,0 +1,49 @@
+<% @post.each do |p| %>
+
+<div class="container">
+<div class="col-lg-9 col-md-offset-3">
+<div class="panel panel-info">
+
+
+  <div class="panel-body" style="font-size:30px">
+    <%= p.location %>
+  </div>	
+
+  <div class="panel-body" style="font-size:20px">
+    <p>Rating: <%= p.rating %> </p>
+  </div>
+
+   <div class="panel-body">
+    <p>Length of stay: <%= p.lengthofstay %> days</p>
+  </div>
+
+  <div class="panel-heading" >
+    <h3 class="panel-title">Hostel: <%= p.hostel %></h3>
+  </div>
+
+   <div class="panel-body">
+    <%= p.hostelreview %>
+  </div>
+
+   <div class="panel-heading">
+    <h3 class="panel-title">Favorite Attraction: <%= p.attraction %></h3>
+  </div>
+
+   <div class="panel-body">
+    <%= p.attractionreview %>
+  </div>
+
+  <div class="panel-heading">
+    <h3 class="panel-title">Overall Experience</h3>
+  </div>
+
+  <div class="panel-body">
+    <%= p.overall %>
+  </div>
+
+
+</div>
+</div>
+</div>
+
+<% end %>
