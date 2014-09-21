@@ -10,9 +10,6 @@ class User
   field :latitude, type: Float
   field :longitude, type: Float
 
-  has_many :messages
-  has_many :maps
-
 	attr_reader :password
 
 	# validates_presence_of :first, :message => "Enter your first name"

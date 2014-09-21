@@ -20,11 +20,45 @@
 	</script>
 </head>
 
+<style type="text/css">
+	
+.panel-heading {
+	color: #191975 !important;
+	font-size: 40px;
+	font-family: Ubuntu;
+	font-weight: 700;
+	text-align: center;
+}
+
+.panel-body {
+	text-align: center;
+	font-family: Ubuntu;
+	font-size: 25px;
+	color: #333333;
+}
+
+.container {
+	margin-top: 100px;
+}
+
+.button {
+	color: #191975;
+}
+
+</style>
+
 
 <body>
 
 
+<div class="container">
+<div class="col-lg-8 col-md-offset-2">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p>Your Current Latitude + Longitude</p>
+</div>
 
+<div class="panel-body">
 <%= form_for @map do |f| %>
 	<div class="form-group">
 	<%= f.label :latitude %><br>
@@ -34,11 +68,14 @@
 	<%= f.label :longitude %><br>
 	<%= f.text_field :longitude, id: "getLng" %><br><br>
 	</div>
-	<div class="form-group" style="color:black">
-	<%= f.submit 'Save my Lat/Lng!' %>
+	<div class="form-group button">
+	<%= f.submit 'Save This Location To Map' %>
 	</div>
 <% end %>
-
+</div>
+</div>
+</div>
+</div>
 
 </body>
 </html>

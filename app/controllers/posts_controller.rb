@@ -8,6 +8,10 @@ class PostsController < ApplicationController
     @post = Post.all
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def create
     @post = Post.new(params.require(:post).permit(:rating, :location, :lengthofstay, :hostel, :hostelreview, :attraction, :attractionreview, :overall, :latitude, :longitude))
     if @post.save

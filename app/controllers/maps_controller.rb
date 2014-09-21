@@ -8,9 +8,9 @@ class MapsController < ApplicationController
   end
 
   def create
-  	@map = Map.new(params.require(:map).permit(:latitude, :longitude, :user))
+  	@map = Map.new(params.require(:map).permit(:latitude, :longitude))
   		if @map.save
-  			redirect_to mymap_path
+  			redirect_to maps_path
   		else
   			render 'new'
   		end

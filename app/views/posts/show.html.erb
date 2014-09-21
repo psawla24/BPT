@@ -12,16 +12,16 @@ var mapStyle = [{"featureType":"landscape","stylers":[{"hue":"#FFA800"},{"satura
 function initialize() {
 	var mapOptions = {
 	   center : {
-				lat: 11.9834935,
-				lng: 104.9806145
+				lat: 34.0218628,
+				lng: -118.4804206
 				},
-		zoom: 5,
+		zoom: 13,
 		styles: mapStyle
 	};
   
   var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-  var mapPoints = [<% @map.each do |mp| %>
+  var mapPoints = [<% @post.each do |mp| %>
   	{latitude: <%= mp.latitude %>, longitude: <%= mp.longitude %>},<% end %>];
 
   for(var i = 0; i < mapPoints.length; ++i)
@@ -36,75 +36,45 @@ function initialize() {
 	    draggable: true
 	  });
 	}
+
 }
+
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>
 
-<style type="text/css">
-	
-#map {
-	height: 625px;
-	width: 1100px;
-	margin: 0 auto;
-	border: 10px solid white;
-}
-
-.addLocLink {
-	text-align: center;
-	font-size: 20px;
-}
-
-.container {
-	margin-top: 25px;
-}
-
-.p-heading {
-	font-family: Ubuntu; 
-	color: #666; 
-	text-align: center; 
-	font-size: 54px;
-	font-weight: 700;
-}
-
-a:link {
-	font-family: Ubuntu;
-	color: #8AE1FF;
-}
-
-a:hover {
-	color: #59C239;
-}
-
-a:visited {
-	color: #8AE1FF;
-}
-
-
-</style>
-
 </head>
 
-
-
-
 <body>
+<br>
+<p class="p-heading">Map and Geolocation!</p><br>
 
-<div class="container">
-
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="p-heading">Your BackPack Track</p>
-</div>
-
-<div class="panel-body addLocLink">
-<%= link_to "Add A New Location To Map", new_map_path %>
+<div id="container">
 
 <div id="map">Map!</div>
 </div>
 
+
+
+
+
+
+
+<% @post.each do |p| %>
+
+<div class="panel panel-info">
+
+  <div class="panel-body" style="font-size:30px">
+    <%= p.location %>
+  </div>  
+
 </div>
+
+<% end %>
+
+
+
 
 
 </body>

@@ -8,7 +8,5 @@ class Message
   # field :created_at, type: DateTime
   # field :updated_at, type: DateTime
 
-  belongs_to :user
-
 end
 
