@@ -2,6 +2,7 @@ require 'bcrypt'
 
 class User
   include Mongoid::Document
+  include Mongoid::Paperclip
 
   field :first, type: String
   field :last, type: String
@@ -10,7 +11,43 @@ class User
   field :latitude, type: Float
   field :longitude, type: Float
 
-	attr_reader :password
+  has_mongoid_attached_file :avatar,
+    :styles => {
+    :thumb => "100x100#",
+    :small => "150x150>"
+  }
+
+  has_mongoid_attached_file :avatar1,
+    :styles => {
+    :medium => "200x200"
+  }
+
+  has_mongoid_attached_file :avatar2,
+    :styles => {
+    :medium => "200x200"
+  }
+
+  has_mongoid_attached_file :avatar3,
+    :styles => {
+    :medium => "200x200"
+  }
+
+  has_mongoid_attached_file :avatar4,
+    :styles => {
+    :medium => "200x200"
+  }
+
+  has_mongoid_attached_file :avatar5,
+    :styles => {
+    :medium => "200x200"
+  }
+
+  has_mongoid_attached_file :avatar6,
+    :styles => {
+    :medium => "200x200"
+  }
+
+    attr_reader :password
 
 	# validates_presence_of :first, :message => "Enter your first name"
 
@@ -25,6 +62,9 @@ class User
 			false
 		end
 	end
+
+	 validates_attachment_content_type :avatar, :avatar1 ,:avatar2, :avatar3, :avatar4, :avatar5, :avatar6, content_type: /\Aimage\/.*\Z/
+
 end
 
 

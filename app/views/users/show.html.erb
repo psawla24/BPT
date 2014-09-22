@@ -1,26 +1,32 @@
-<!-- IF YOU SEE THIS PAGE, CHANGE root_path AT BOTTOM OF PAGE TO signup_path -->
 <html>
 <head>
+
+<script type="text/javascript">
+	$('.carousel').carousel({
+  interval: 1000
+})
+</script>
 <style>
+
+#carouselPics {
+	width: 200px;
+	margin: 0 auto;
+}
 
 .panel-heading {
 	text-align: center;
 	background-color: white !important;
-	font-size: 51px;
+	font-size: 45px;
 	font-family: Ubuntu;
 	font-weight: 700;
 	color: #555 !important;
-
 }
 
 .panel-body {
-	font-size: 35px;
+	font-size: 30px;
 	text-align: center;
 	font-family: Ubuntu;
-	/*text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #193670, 0 0 70px #193670, 0 0 80px #193670, 0 0 100px #193670, 0 0 150px #193670;*/
 }
-
-
 
 #logoutButton {
 	font-size: 40px;
@@ -28,7 +34,7 @@
 }
 
 .panel {
-	margin-top: 100px;
+	margin-top: 60px;
 	border: solid 1px #fff; 
 	box-shadow: 0px 0px 20px 27px #fff;
 }
@@ -52,7 +58,6 @@ a:visited {
 
 
 </head>
-
 	
 	<% if logged_in? %> 
 
@@ -63,9 +68,54 @@ a:visited {
 	<div class="panel panel-default">
 
 	<div class="panel-heading">
+		<%= image_tag current_user.avatar.url(:thumb) %>
 		<p> <%= current_user.first %>'s Dashboard</p>
-	</div>
+		
+<div id="carouselPics" class="carousel slide" data-ride="carousel">
 
+<ol class="carousel-indicators">
+<li data-target="#carouselPics" data-slide-to="0" class="active"></li>
+<li data-target="#carouselPics" data-slide-to="1"></li>
+<li data-target="#carouselPics" data-slide-to="2"></li>
+<li data-target="#carouselPics" data-slide-to="3"></li>
+<li data-target="#carouselPics" data-slide-to="4"></li>
+<li data-target="#carouselPics" data-slide-to="6"></li>
+<li data-target="#carouselPics" data-slide-to="6"></li>
+</ol>
+
+<div class="carousel-inner">
+<div class="item active">
+  <%= image_tag current_user.avatar1.url(:medium) %>
+</div>
+<div class="item">
+  <%= image_tag current_user.avatar2.url(:medium) %>
+</div>
+<div class="item">
+  <%= image_tag current_user.avatar3.url(:medium) %> 
+</div>
+<div class="item">
+  <%= image_tag current_user.avatar4.url(:medium) %>
+</div>
+<div class="item">
+  <%= image_tag current_user.avatar5.url(:medium) %>
+</div>
+<div class="item">
+  <%= image_tag current_user.avatar6.url(:medium) %> 
+</div>
+</div>
+
+<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+<span class="icon-prev"></span>
+</a>
+<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+<span class="icon-next"></span>
+</a>
+</div>
+
+
+
+
+	</div>
 
 	<div class="panel-body">
 		<%= link_to "Add a New Location Post", new_post_path, 'data-no-turbolink' => true %>
@@ -80,19 +130,18 @@ a:visited {
 	</div>
 
 	<div class="panel-body">
-		<%= link_to "Edit My Profile", edit_user_path(current_user) %>
+		<%= link_to "Add/Edit Profile Photo", edit_user_path(current_user) %>
 	</div>
 
 	<div class="panel-body">	
 		<%= link_to "Log Out", sessions_path, method: :delete %>
 	</div>
 
-
-
 	</div>
 	</div>
 
 </div>
+
 
 	<% else %>
 		<p style="color:white;font-size:40px;">You're logged out!</p>
@@ -102,11 +151,7 @@ a:visited {
 		</button>
 	<% end %>
 
-
-
 </html>
-
-
 
 
 <%#= link_to "Add Current Lat/Lng to Database!", edit_user_path(current_user) %>

@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
 
   def create 
-    @user = User.new(params.require(:user).permit(:first, :last, :email, :password, :latitude, :longitude))
+    @user = User.new(params.require(:user).permit(:first, :last, :email, :password, :avatar, :avatar1, :avatar2, :avatar3, :avatar4, :avatar5, :avatar6))
       if @user.save
 #        log_in(@user)
         redirect_to new_session_path
@@ -27,8 +27,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    if @user.update_attributes(params.require(:user).permit(:latitude, :longitude))
-      redirect_to user_path
+    if @user.update_attributes(params.require(:user).permit(:avatar, :avatar1, :avatar2, :avatar3, :avatar4, :avatar5, :avatar6))
+      redirect_to user_path(current_user)
     else
       render 'edit'
     end
