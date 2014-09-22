@@ -1,17 +1,113 @@
-<h1>DASHBOARD!</h1>
+<!-- IF YOU SEE THIS PAGE, CHANGE root_path AT BOTTOM OF PAGE TO signup_path -->
+<html>
+<head>
+<style>
 
-<%= link_to "Log Out", session_path, method: :delete %>
+.panel-heading {
+	text-align: center;
+	background-color: white !important;
+	font-size: 51px;
+	font-family: Ubuntu;
+	font-weight: 700;
+	color: #555 !important;
 
-<h1> <%= current_user.first %> <%= current_user.last %> </h1>
+}
+
+.panel-body {
+	font-size: 35px;
+	text-align: center;
+	font-family: Ubuntu;
+	/*text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #193670, 0 0 70px #193670, 0 0 80px #193670, 0 0 100px #193670, 0 0 150px #193670;*/
+}
 
 
-<p> <%#= @user.email ORIGINAL FORMAT FOR ABOVE%> </p> 
+
+#logoutButton {
+	font-size: 40px;
+	text-align: center;
+}
+
+.panel {
+	margin-top: 100px;
+	border: solid 1px #fff; 
+	box-shadow: 0px 0px 20px 27px #fff;
+}
+
+a:link {
+	color: #193670;
+}
+
+a:hover {
+	color: #193670;
+	font-style: italic;
+}
+
+a:visited { 
+  color: #193670;
+}
 
 
 
-<%= link_to "Add a New Location Post", new_post_path %>
+</style>
 
-<%= link_to "View My Location Map", maps_path %>
+
+</head>
+
+	
+	<% if logged_in? %> 
+
+	<div class="container">
+	<div class="col-lg-8 col-md-offset-2">
+
+
+	<div class="panel panel-default">
+
+	<div class="panel-heading">
+		<p> <%= current_user.first %>'s Dashboard</p>
+	</div>
+
+
+	<div class="panel-body">
+		<%= link_to "Add a New Location Post", new_post_path, 'data-no-turbolink' => true %>
+	</div>
+
+	<div class="panel-body">
+		<%= link_to "Manage My Location Posts", posts_path, 'data-no-turbolink' => true %>
+	</div>
+
+	<div class="panel-body">
+		<%= link_to "View My Location Map", maps_path, 'data-no-turbolink' => true %>
+	</div>
+
+	<div class="panel-body">
+		<%= link_to "Edit My Profile", edit_user_path(current_user) %>
+	</div>
+
+	<div class="panel-body">	
+		<%= link_to "Log Out", sessions_path, method: :delete %>
+	</div>
+
+
+
+	</div>
+	</div>
+
+</div>
+
+	<% else %>
+		<p style="color:white;font-size:40px;">You're logged out!</p>
+		<%#= link_to "Log in", sessions_path %><br>
+		<button style="height:100px; width:400px; font-size:35px;">
+		<%= link_to "Return To Homepage", new_session_path %>
+		</button>
+	<% end %>
+
+
+
+</html>
+
+
+
 
 <%#= link_to "Add Current Lat/Lng to Database!", edit_user_path(current_user) %>
 

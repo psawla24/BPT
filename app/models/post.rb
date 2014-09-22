@@ -1,6 +1,7 @@
 class Post
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
+  include Mongoid::Timestamps
 
   field :rating, type: Integer
   field :location, type: String
@@ -12,5 +13,6 @@ class Post
   field :overall, type: String
   field :latitude, type: Float
   field :longitude, type: Float
+
 
 end
