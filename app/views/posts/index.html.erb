@@ -1,60 +1,66 @@
-<style type="text/css">
-	.container {
-		margin-top: 30px;
-	}
+<head>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvQPK_z7tyIdBpGxui6Jps_zZsPudqzJ4"></script>
 
-	p {
-		color: #555;
-		font-size: 55px;
-		font-family: Ubuntu;
-		font-weight: 600;
-		text-align: center;
-	}
+<script type="text/javascript">
 
-	.panel-heading {
-		font-size: 30px;
-		font-family: Ubuntu;
-	}
+mapStyle = [{"featureType":"all","elementType":"all","stylers":[{"hue":"#ff0000"},{"saturation":-100},{"lightness":-30}]},{"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"color":"#353535"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#656565"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"color":"#505050"}]},{"featureType":"poi","elementType":"geometry.stroke","stylers":[{"color":"#808080"}]},{"featureType":"road","elementType":"geometry","stylers":[{"color":"#454545"}]},{"featureType":"transit","elementType":"labels","stylers":[{"hue":"#000000"},{"saturation":100},{"lightness":-40},{"invert_lightness":true},{"gamma":1.5}]}]
 
-	.panel-body {
-		font-size: 20px;
-		font-family: Ubuntu;
-	}
+function initialize() {
+  var mapOptions = {
+    center : {
+        lat: 33.99163,
+        lng: -118.46324
+        },
+    zoom: 3,
+    styles: mapStyle
+  };
+  
+  var map = new google.maps.Map(document.getElementById('postIndexMap'), mapOptions);
+  var mapPoints = [<% @posts.each do |mp| %>
+    {latitude: <%= mp.latitude %>, longitude: <%= mp.longitude %>},<% end %>];
+  for(var i = 0; i < mapPoints.length; ++i)
+  {
+    var visitedLocation = new google.maps.LatLng(mapPoints[i].latitude, mapPoints[i].longitude);
+    var marker = new google.maps.Marker({
+      position: visitedLocation,
+      title: 'city',
+      map: map,
+      draggable: false
+    });
+    //   google.maps.event.addListener(marker, 'click', function() {
+    //     window.open('<%= link_to root_path %>');
+    // });
+  }
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 
-</style>
+</head>
 
 
-
-<div class="container">
- <div class="panel panel-info col-lg-8 col-lg-offset-2">
-
-  <div class="panel-body">
-  <p>Submitted Posts</p>
-  <%= link_to "Back To Dashboard", user_path(current_user) %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
- 
-  <%= link_to "Log Out", sessions_path, method: :delete %>
-
-  </div>
-  </div>
-
-<% @post.each do |p| %>
-
-  <div class="panel panel-info col-lg-8 col-lg-offset-2">
-
-  <div class="panel-heading">
-    Location: <%= p.location %>
-  </div>
-
-  <div class="panel-body">
-    Creation Date and Time: <%= p.created_at %><br/>
-    <%= link_to "View Full Post", post_path(p) %>
-  </div> 
- 
-</div>
-
-<% end %>
+<body>
+  <div class="user-nav">
+    <span><%= link_to "Dashboard", user_path(current_user) %></span>
+      <span>|</span>
+    <span><%= link_to "Log Out", logout_path, 'data-no-turbolink' => false %></span>
   </div>
 
 
+  <div id="postIndexMap"></div>
 
+
+  <div id="post-index-container">
+      <% @posts.each do |p| %>
+        <%= link_to user_post_path(@user, p) do %>
+          <div class="posts-info-div">
+            <%= image_tag p.photo_one.url(:medium) %>
+            <p class="p-i-city-country"><%= p.city %>, <%= p.country %></p>
+            <p class="p-i-rating">Rating: <%= p.rating %> / 5</p>
+            <p class="p-i-days-ago"><%= ((Time.now.utc - p.created_at)/86400).floor %> days ago<p>
+            <p><%= link_to "Edit Post", edit_user_post_path(@user, p) if p.user_id == current_user.id %>&nbsp&nbsp|&nbsp&nbsp<%= link_to "Delete Post", user_post_path(@user, p), method: :destroy if p.user_id == current_user.id %></p>
+          </div>
+        <% end %>
+      <% end %>
+  </div>
+</body>
 

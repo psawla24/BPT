@@ -1,0 +1,39 @@
+
+<body>
+
+  <div class="user-nav">
+    <span><%= link_to "Dashboard", user_path(current_user) %></span>
+      <span>|</span>
+    <span><%= link_to "Log Out", logout_path, 'data-no-turbolink' => false %></span>
+  </div>
+
+  <div id="continent-list-div">
+    <div class="continent"><%= link_to "All", posts_all_path %></div>
+    <div class="continent"><%= link_to "Australia", posts_australia_path %></div>
+    <div class="continent"><%= link_to "Europe", posts_europe_path %></div>
+    <div class="continent"><%= link_to "North America", posts_north_america_path %></div>
+    <div class="continent"><%= link_to "Asia", posts_asia_path %></div>
+    <div class="continent"><%= link_to "South America", posts_south_america_path %></div>
+    <div class="continent-active"><%= link_to "Africa", posts_africa_path %></div>
+    <div class="continent"><%= link_to "Antarctica", posts_antarctica_path %></div>
+  </div>
+
+  <div class="p-a-div">
+    <% @posts.each do |p| %>
+      <%= link_to user_post_path(@users, p) do %>
+        <div class="p-a-entry-div">
+          <div class="p-a-entry">
+            <%= image_tag p.photo_one.url(:medium), class: 'p-a-photo-one' %>
+              <%= image_tag p.photo_two.url(:medium), class: 'p-a-photo-234' %>
+              <%= image_tag p.photo_three.url(:medium), class: 'p-a-photo-234' %>
+              <%= image_tag p.photo_four.url(:medium), class: 'p-a-photo-234' %>
+            <p class="p-a-city"><%= p.city %></p>
+            <p class="p-a-country"><%= p.country %></p>
+            <p class="p-a-rating"><%= p.rating %> / 5</p>
+          </div>  
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</body>

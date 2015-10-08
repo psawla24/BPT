@@ -1,220 +1,217 @@
 <html>
-    <head>
-        <title></title>
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvQPK_z7tyIdBpGxui6Jps_zZsPudqzJ4"></script>
-        <script type="text/javascript">
-            var geocoder = new google.maps.Geocoder();
+<head>
+  <title>New Entry</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvQPK_z7tyIdBpGxui6Jps_zZsPudqzJ4"></script>
+  <script type="text/javascript">
+  var geocoder = new google.maps.Geocoder();
 
-            function geocodePosition(pos) {
-                geocoder.geocode({
-                    latLng: pos
-                }, function(responses) {
-                    if (responses && responses.length > 0) {
-                        updateMarkerAddress(responses[0].formatted_address);
-                    } else {
-                        updateMarkerAddress('Cannot determine address at this location.');
-                    }
-                });
+  function geocodePosition(pos) {
+    geocoder.geocode({
+      latLng: pos
+    }, function(responses) {
+      if (responses && responses.length > 0) {
+
+        locality = false;
+        
+        for (i = 0; i < responses[0].address_components.length; i++) {
+          if (responses[0].address_components[i].types[0] == "locality") {
+            locality = true;
+            updateMarkerCity(responses[0].address_components[i].long_name);
+          }
+          if (responses[0].address_components[i].types[0] == "country") {
+            updateMarkerCountry(responses[0].address_components[i].long_name);
+          }
+          if (responses[0].address_components[i].types[0] == "country") {
+            var theContinent = responses[0].address_components[i].short_name;
+            var continentHash = {"AD":"EUX","AE":"ASX","AF":"ASX","AG":"NAX","AI":"NAX","AL":"EUX","AM":"ASX","AN":"NAX","AO":"AFX","AQ":"ANX","AR":"SAX","AS":"AUX","AT":"EUX","AU":"AUX","AW":"NAX","AZ":"ASX","BA":"EUX","BB":"NAX","BD":"ASX","BE":"EUX","BF":"AFX","BG":"EUX","BH":"ASX","BI":"AFX","BJ":"AFX","BM":"NAX","BN":"ASX","BO":"SAX","BR":"SAX","BS":"NAX","BT":"ASX","BW":"AFX","BY":"EUX","BZ":"NAX","CA":"NAX","CC":"ASX","CD":"AFX","CF":"AFX","CG":"AFX","CH":"EUX","CI":"AFX","CK":"AUX","CL":"SAX","CM":"AFX","CN":"ASX","CO":"SAX","CR":"NAX","CU":"NAX","CV":"AFX","CX":"ASX","CY":"ASX","CZ":"EUX","DE":"EUX","DJ":"AFX","DK":"EUX","DM":"NAX","DO":"NAX","DZ":"AFX","EC":"SAX","EE":"EUX","EG":"AFX","EH":"AFX","ER":"AFX","ES":"EUX","ET":"AFX","FI":"EUX","FJ":"AUX","FK":"SAX","FM":"AUX","FO":"EUX","FR":"EUX","GA":"AFX","GB":"EUX","GD":"NAX","GE":"ASX","GF":"SAX","GG":"EUX","GH":"AFX","GI":"EUX","GL":"NAX","GM":"AFX","GN":"AFX","GP":"NAX","GQ":"AFX","GR":"EUX","GS":"ANX","GT":"NAX","GU":"AUX","GW":"AFX","GY":"SAX","HK":"ASX","HN":"NAX","HR":"EUX","HT":"NAX","HU":"EUX","ID":"ASX","IE":"EUX","IL":"ASX","IM":"EUX","IN":"ASX","IO":"ASX","IQ":"ASX","IR":"ASX","IS":"EUX","IT":"EUX","JE":"EUX","JM":"NAX","JO":"ASX","JP":"ASX","KE":"AFX","KG":"ASX","KH":"ASX","KI":"AUX","KM":"AFX","KN":"NAX","KP":"ASX","KR":"ASX","KW":"ASX","KY":"NAX","KZ":"ASX","LA":"ASX","LB":"ASX","LC":"NAX","LI":"EUX","LK":"ASX","LR":"AFX","LS":"AFX","LT":"EUX","LU":"EUX","LV":"EUX","LY":"AFX","MA":"AFX","MC":"EUX","MD":"EUX","ME":"EUX","MG":"AFX","MH":"AUX","MK":"EUX","ML":"AFX","MM":"ASX","MN":"ASX","MO":"ASX","MP":"AUX","MQ":"NAX","MR":"AFX","MS":"NAX","MT":"EUX","MU":"AFX","MV":"ASX","MW":"AFX","MX":"NAX","MY":"ASX","MZ":"AFX","NA":"AFX","NC":"AUX","NE":"AFX","NF":"AUX","NG":"AFX","NI":"NAX","NL":"EUX","NO":"EUX","NP":"ASX","NR":"AUX","NU":"AUX","NZ":"AUX","OM":"ASX","PA":"NAX","PE":"SAX","PF":"AUX","PG":"AUX","PH":"ASX","PK":"ASX","PL":"EUX","PM":"NAX","PN":"AUX","PR":"NAX","PS":"ASX","PT":"EUX","PW":"AUX","PY":"SAX","QA":"ASX","RE":"AFX","RO":"EUX","RS":"EUX","RU":"EUX","RW":"AFX","SA":"ASX","SB":"AUX","SC":"AFX","SD":"AFX","SE":"EUX","SG":"ASX","SH":"AFX","SI":"EUX","SJ":"EUX","SK":"EUX","SL":"AFX","SM":"EUX","SN":"AFX","SO":"AFX","SR":"SAX","ST":"AFX","SV":"NAX","SY":"ASX","SZ":"AFX","TC":"NAX","TD":"AFX","TF":"ANX","TG":"AFX","TH":"ASX","TJ":"ASX","TK":"AUX","TM":"ASX","TN":"AFX","TO":"AUX","TR":"ASX","TT":"NAX","TV":"AUX","TW":"ASX","TZ":"AFX","UA":"EUX","UG":"AFX","US":"NAX","UY":"SAX","UZ":"ASX","VC":"NAX","VE":"SAX","VG":"NAX","VI":"NAX","VN":"ASX","VU":"AUX","WF":"AUX","WS":"AUX","YE":"ASX","YT":"AFX","ZA":"AFX","ZM":"AFX","ZW":"AFX"};
+                    updateMarkerContinent(continentHash[theContinent]);
             }
+        }
 
-            function updateMarkerStatus(str) {
-                document.getElementById('markerStatus').innerHTML = str;
+        if (locality == false) {
+          for (i = 0; i < responses[0].address_components.length; i++) {
+            if (responses[0].address_components[i].types[0] == "administrative_area_level_1") {
+              updateMarkerCity(responses[0].address_components[i].long_name);
             }
+          }
+        }
+        console.log(responses[0]);
+      } else {
+        updateMarkerCity('NULL');
+        updateMarkerCountry('NULL');
+        updateMarkerContinent('NULL');
+      }
+    });
+  }
 
-            function updateMarkerPosition(latLng) {
-                document.getElementById('infolat').value = latLng.lat();
-                document.getElementById('infolng').value = latLng.lng();
-            }
+  function updateMarkerStatus(str) {
+      document.getElementById('markerStatus').innerHTML = str;
+  }
 
-            function updateMarkerAddress(str) {
-                document.getElementById('address').innerHTML = str;
-            }
+  function updateMarkerPosition(latLng) {
+      document.getElementById('infolat').value = latLng.lat();
+      document.getElementById('infolng').value = latLng.lng();
+  }
 
-            function initialize() {
-                var latLng = new google.maps.LatLng(-34.397, 150.644);
-                var map = new google.maps.Map(document.getElementById('mapCanvas'), {
-                    zoom: 8,
-                    center: latLng,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                });
-                var marker = new google.maps.Marker({
-                    position: latLng,
-                    title: 'Point A',
-                    map: map,
-                    draggable: true
-                });
+  function updateMarkerCity(str) {
+      document.getElementById('geo-city').value = str;
+  }
 
-                // Update current position info.
-                updateMarkerPosition(latLng);
-                geocodePosition(latLng);
+  function updateMarkerCountry(str) {
+      document.getElementById('geo-country').value = str;
+  }
 
-                // Add dragging event listeners.
-                google.maps.event.addListener(marker, 'dragstart', function() {
-                    updateMarkerAddress('Dragging...');
-                });
+  function updateMarkerContinent(str) {
+      document.getElementById('geo-continent').value = str;
+  }
 
-                google.maps.event.addListener(marker, 'drag', function() {
-                    updateMarkerStatus('Dragging...');
-                    updateMarkerPosition(marker.getPosition());
-                });
+  function initialize() {
+      var latLng = new google.maps.LatLng(34.0204989,-118.4117325);
+      var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+          zoom: 3,
+          center: latLng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
+      var marker = new google.maps.Marker({
+          position: latLng,
+          title: 'Drag Me',
+          map: map,
+          draggable: true
+      });
 
-                google.maps.event.addListener(marker, 'dragend', function() {
-                    updateMarkerStatus('Drag ended');
-                    geocodePosition(marker.getPosition());
-                });
-            }
+      updateMarkerPosition(latLng);
+      geocodePosition(latLng);
 
-            // Onload handler to fire off the app.
-            google.maps.event.addDomListener(window, 'load', initialize);
-        </script>
-        <style type="text/css">
+      google.maps.event.addListener(marker, 'drag', function() {
+          updateMarkerStatus('Dragging...');
+          updateMarkerPosition(marker.getPosition());
+      });
 
-            p {
-                font-size: 45px;
-                text-align: center;
-                font-family: Ubuntu;
-                font-weight: 700;
-                color: #191975;
-            }
-            #mapCanvas {
-                width: 552px;
-                height: 554px;
-            }
-            #infoPanel {
-                float: left;
-                margin-left: 10px;
-            }
-            #infoPanel div {
-                margin-bottom: 5px;
-            }
+      google.maps.event.addListener(marker, 'dragend', function() {
+          updateMarkerStatus('Drag ended');
+          geocodePosition(marker.getPosition());
+      });
+  }
 
-            .inputHeight {
-                height: 112px !important;
-            }
+  google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+</head>
 
-            .container-fluid {
-                margin-top: 25px;
-            }
-
-            .form-group {
-                display: inline-block;
-                font-size: 16px;
-                font-family: Ubuntu;
-                background-color: #eee;
-                border-radius: 10px;
-            }
-            a:link {
-                color: #191975;
-                font-family: Ubuntu;
-            }
-
-            a:visited {
-                color: #191975;
-                font-family: Ubuntu;
-            }
-
-            .input-group {
-                font-family: Ubuntu;
-            }
-
-            button {
-                font-family: Ubuntu;
-            }
-
-        </style>
-    </head>
-
-
+<!-- ****************************** HEAD/BODY DIVIDER ****************************** -->
 
 <body>
+  <div class="user-nav">
+    <span><%= link_to "Dashboard", user_path(current_user) %></span>
+      <span>|</span>
+    <span><%= link_to "Log Out", logout_path, 'data-no-turbolink' => false %></span>
+  </div>
 
-<div class="container-fluid">
-<div class="panel panel-default">
-<div class="panel-heading">
-<p>Create Post For A Visited Location</p>
-</div>
+  <div class="container p-n-container">
+  <div class="panel panel-default">
+  <div class="panel-heading p-n-panel-heading">
+    <p class="p-n-title">add a new entry</p>
+  </div>
 
+  <div class="panel-body p-n-panel-body">
+  <div class="row">
+    <div class="col-lg-5">
+      <p class="map-instructions">zoom map and drag marker until your desired city and country appear in the fields below</p>
 
+      <%= form_for @post, url: {action: 'create'}, method: :post do |f| %>
+        <div class="input-group-lg city-name">
+          <%= f.text_field :city, id: "geo-city", class: 'form-control' %>
+        </div>
 
-<div class="panel-body">
-<div class="row">
-<div class="col-lg-5">
-	<div id="mapCanvas" ></div>
+        <div class="input-group-lg country-name">
+          <%= f.text_field :country, id: "geo-country", class: 'form-control' %>
+        </div>
 
+        <div class="input-group-lg continent-name">
+          <%= f.text_field :continent, id: "geo-continent", class: 'form-control' %>
+        </div>
 
-	<div id="markerStatus" style="visibility: hidden"></div>
-	<div id="address" style="visibility: hidden"></div>
+        <div id="markerStatus"></div>
 
-<%= form_for @post do |f| %>
+        <div class="input-group-lg">
+          <%= f.text_field :latitude, id: "infolat" %>
+        </div>
+          
+        <div class="input-group-lg">
+          <%= f.text_field :longitude, id: "infolng" %>
+        </div>
 
-    <div class="form-group">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude, id: "infolat" %>
-    </div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    
-    <div class="form-group">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude, id: "infolng" %>
+        <div id="mapCanvas"></div>  <!-- MAP ****** MAP ****** MAP -->
     </div>
-</div>
 
-<div class="col-lg-7">
+    <div class="col-lg-7">
+      <div class="input-group-lg city-rating">
+        <%= f.number_field :rating, in: 1.0..5.0, step: 1.0, class: 'form-control', placeholder: "1-5 (city rating)" %>
+      </div>
 
-<div class="input-group input-group-lg">
-  <span class="input-group-addon"></span>
-	<%= f.number_field :rating, in: 1.0..10.0, step: 1.0, class: 'form-control', placeholder: "1 (poor) - 10 (great)" %>
-</div>
+      <div class="input-group-lg hostel-name">
+        <%= f.text_field :hostel, class: 'form-control', placeholder: "Hostel Name" %>
+      </div>
 
-<div class="input-group input-group-lg">
-  <span class="input-group-addon"></span>
-	<%= f.text_field :location, class: 'form-control', placeholder: "City and Country" %>
-</div>
+      <div class="input-group-lg hostel-rating">
+        <%= f.number_field :hostel_rating, in: 1.0..5.0, step: 1.0, class: 'form-control', placeholder: "1-5 (hostel rating)" %>
+      </div>
 
-<div class="input-group input-group-lg">
-  <span class="input-group-addon"></span>
-	<%= f.number_field :lengthofstay, in: 1.0..30.0, step: 1.0, class: 'form-control', placeholder: "Length of stay" %>
-</div>
+      <div class="input-group-lg">
+        <%= f.text_field :hostel_review, class: 'form-control hostel-review-input', placeholder: "Hostel Review" %>
+      </div>
 
-<div class="input-group input-group-lg">
-  <span class="input-group-addon"></span>
-	<%= f.text_field :hostel, class: 'form-control', placeholder: "Hostel Name" %>
-</div>
+      <div class="input-group-lg eatery-input">
+        <%= f.text_field :eatery, class: 'form-control', placeholder: "Best Eatery" %>
+      </div>
 
-<div class="input-group input-group-lg">
-  <span class="input-group-addon"></span>
-	<%= f.text_field :hostelreview, class: 'form-control inputHeight', placeholder: "Hostel Review" %>
-</div>
+      <div class="input-group-lg eatery-dish-input">
+        <%= f.text_field :eatery_dish, class: 'form-control', placeholder: "Recommended Dish" %>
+      </div>
 
-<div class="input-group input-group-lg">
-  <span class="input-group-addon"></span>
-	<%= f.text_field :attraction, class: 'form-control', placeholder: "Must-see Attraction/Sight" %>
-</div>
+      <div class="input-group-lg sights-input">
+        <%= f.text_field :sight_one, class: 'form-control', placeholder: "Recommended Sight 1" %>
+      </div>
 
-<div class="input-group input-group-lg">
-  <span class="input-group-addon"></span>
-	<%= f.text_field :attractionreview, class: 'form-control inputHeight', placeholder: "Review of Attraction/Sight" %>
-</div>
+      <div class="input-group-lg sights-input">
+        <%= f.text_field :sight_two, class: 'form-control', placeholder: "Recommended Sight 2" %>
+      </div>
 
-<div class="input-group input-group-lg">
-  <span class="input-group-addon"></span>
-	<%= f.text_field :overall, class: 'form-control inputHeight', placeholder: "Your Overall Experience" %>
-</div><br/>
- 
- <button type="submit" class="btn btn-lg">SUBMIT!</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
- <%= link_to "Back To Post Collection", posts_path, 'data-no-turbolink' => true %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
- <%= link_to "Back To Dashboard", user_path(current_user) %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
- <%= link_to "Log Out", sessions_path, method: :delete %>
+      <div class="input-group-lg sights-input">
+        <%= f.text_field :sight_three, class: 'form-control', placeholder: "Recommended Sight 3" %>
+      </div>
 
-<% end %>
+      <div class="input-group-md photos-select">
+        <%= f.file_field :photo_one, class: 'form-control pic-file' %>
+      </div>
 
-</div>
-</div>
-</div>
+      <div class="input-group-md photos-select">
+        <%= f.file_field :photo_two, class: 'form-control pic-file'%>
+      </div>
 
-</div>
-</div>
+      <div class="input-group-md photos-select">
+        <%= f.file_field :photo_three, class: 'form-control pic-file'%>
+      </div>
 
+      <div class="input-group-md photos-select photo-four">
+        <%= f.file_field :photo_four, class: 'form-control pic-file'%>
+      </div>
+
+      <div class="input-group-lg">
+        <%= f.text_field :safety_tips, class: 'form-control safety-input', placeholder: 'Safety Tips' %>
+      </div>
+
+      <div class="input-group-lg">
+        <%= f.text_field :overall, class: 'form-control overall-input', placeholder: "Overall Experience, Tips, & Recommendations" %>
+      </div><br/>
+       
+      <button type="submit" class="btn btn-lg form-control" id="p-n-submit">SUBMIT</button>
+    <% end %>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
 </body>
 
 </html>

@@ -1,147 +1,45 @@
 <html>
 <head>
 
-<script type="text/javascript">
-	$('.carousel').carousel({
-  interval: 1000
-})
-</script>
-<style>
-
-#carouselPics {
-	width: 200px;
-	margin: 0 auto;
-}
-
-.panel-heading {
-	text-align: center;
-	background-color: white !important;
-	font-size: 45px;
-	font-family: Ubuntu;
-	font-weight: 700;
-	color: #555 !important;
-}
-
-.panel-body {
-	font-size: 30px;
-	text-align: center;
-	font-family: Ubuntu;
-}
-
-#logoutButton {
-	font-size: 40px;
-	text-align: center;
-}
-
-.panel {
-	margin-top: 60px;
-	border: solid 1px #fff; 
-	box-shadow: 0px 0px 20px 27px #fff;
-}
-
-a:link {
-	color: #193670;
-}
-
-a:hover {
-	color: #193670;
-	font-style: italic;
-}
-
-a:visited { 
-  color: #193670;
-}
-
-
-
-</style>
-
-
 </head>
+
+
+<body>
 	
 	<% if logged_in? %> 
+		<div class="container">
+		<div class="col-lg-12">
+		<div class="panel panel-default">
 
-	<div class="container">
-	<div class="col-lg-8 col-md-offset-2">
+		<div class="panel-heading u-s-panel-heading">
+			<p class="u-s-title">Welcome, <%= current_user.first %>!</p>
+			<p class="u-s-post-count">Entries Submitted: <span><%= @post_count %></span></p>
+				<%= image_tag current_user.avatar.url(:small) %>
+		</div>
 
+		<br/>
+		<div class="panel-body u-s-panel-body">
+			<%= link_to "Create New Entry", new_user_post_path(@user), 'data-no-turbolink' => false %>
+		</div>
 
-	<div class="panel panel-default">
+		<div class="panel-body u-s-panel-body">
+			<%= link_to "Manage Entries", user_posts_path(@user), 'data-no-turbolink' => false %>
+		</div>
 
-	<div class="panel-heading">
-		<%= image_tag current_user.avatar.url(:thumb) %>
-		<p> <%= current_user.first %>'s Dashboard</p>
-		
-<div id="carouselPics" class="carousel slide" data-ride="carousel">
+		<div class="panel-body u-s-panel-body">
+			<%= link_to "- Browse Entry Collection -", posts_all_path %>
+		</div>
 
-<ol class="carousel-indicators">
-<li data-target="#carouselPics" data-slide-to="0" class="active"></li>
-<li data-target="#carouselPics" data-slide-to="1"></li>
-<li data-target="#carouselPics" data-slide-to="2"></li>
-<li data-target="#carouselPics" data-slide-to="3"></li>
-<li data-target="#carouselPics" data-slide-to="4"></li>
-<li data-target="#carouselPics" data-slide-to="6"></li>
-<li data-target="#carouselPics" data-slide-to="6"></li>
-</ol>
+		<div class="panel-body u-s-panel-body">
+			<%= link_to "Update Personal Information", edit_user_path(@user) %>
+		</div>
 
-<div class="carousel-inner">
-<div class="item active">
-  <%= image_tag current_user.avatar1.url(:medium) %>
-</div>
-<div class="item">
-  <%= image_tag current_user.avatar2.url(:medium) %>
-</div>
-<div class="item">
-  <%= image_tag current_user.avatar3.url(:medium) %> 
-</div>
-<div class="item">
-  <%= image_tag current_user.avatar4.url(:medium) %>
-</div>
-<div class="item">
-  <%= image_tag current_user.avatar5.url(:medium) %>
-</div>
-<div class="item">
-  <%= image_tag current_user.avatar6.url(:medium) %> 
-</div>
-</div>
-
-<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-<span class="icon-prev"></span>
-</a>
-<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-<span class="icon-next"></span>
-</a>
-</div>
-
-
-
-
-	</div>
-
-	<div class="panel-body">
-		<%= link_to "Add a New Location Post", new_post_path, 'data-no-turbolink' => true %>
-	</div>
-
-	<div class="panel-body">
-		<%= link_to "Manage My Location Posts", posts_path, 'data-no-turbolink' => true %>
-	</div>
-
-	<div class="panel-body">
-		<%= link_to "View My Location Map", maps_path, 'data-no-turbolink' => true %>
-	</div>
-
-	<div class="panel-body">
-		<%= link_to "Add/Edit Profile Photo", edit_user_path(current_user) %>
-	</div>
-
-	<div class="panel-body">	
-		<%= link_to "Log Out", sessions_path, method: :delete %>
-	</div>
-
-	</div>
-	</div>
-
-</div>
-
+		<div class="panel-body u-s-panel-body">	
+			<%= link_to "Log Out", logout_path, 'data-no-turbolink' => false %>
+		</div><br/>
+		</div>
+		</div>
+		</div>
 
 	<% else %>
 		<p style="color:white;font-size:40px;">You're logged out!</p>
@@ -150,6 +48,8 @@ a:visited {
 		<%= link_to "Return To Homepage", new_session_path %>
 		</button>
 	<% end %>
+
+</body>
 
 </html>
 

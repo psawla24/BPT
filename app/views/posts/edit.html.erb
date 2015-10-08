@@ -1,0 +1,77 @@
+<body>
+
+  <div class="user-nav">
+    <span><%= link_to "Dashboard", user_path(current_user) %></span>
+      <span>|</span>
+    <span><%= link_to "Log Out", logout_path, 'data-no-turbolink' => false %></span>
+  </div>    
+
+  <div class="col-lg-8 col-lg-offset-2" id="p-e-div">
+    <%= form_for @post, url: {action: 'update'}, method: :patch do |f| %>
+
+    <div class="input-group-lg city-rating">
+        City Rating: <%= f.number_field :rating, in: 1.0..5.0, step: 1.0, class: 'form-control' %>
+    </div>
+
+    <div class="input-group-lg hostel-name">
+        Hostel Name: <%= f.text_field :hostel, class: 'form-control' %>
+    </div>
+
+    <div class="input-group-lg hostel-rating">
+        Hostel Rating: <%= f.number_field :hostel_rating, in: 1.0..5.0, step: 1.0, class: 'form-control' %>
+    </div>
+
+    <div class="input-group-lg">
+        Hostel Review: <%= f.text_field :hostel_review, class: 'form-control hostel-review-input' %>
+    </div>
+
+    <div class="input-group-lg eatery-input">
+        Eatery: <%= f.text_field :eatery, class: 'form-control' %>
+    </div>
+
+    <div class="input-group-lg eatery-dish-input">
+        Eatery Dish: <%= f.text_field :eatery_dish, class: 'form-control' %>
+    </div>
+
+    <div class="input-group-lg sights-input">
+      Sight 1: <%= f.text_field :sight_one, class: 'form-control' %>
+    </div>
+
+    <div class="input-group-lg sights-input">
+        Sight 2: <%= f.text_field :sight_two, class: 'form-control' %>
+    </div>
+
+    <div class="input-group-lg sights-input">
+        Sight 3: <%= f.text_field :sight_three, class: 'form-control' %>
+    </div>
+
+    <div class="input-group-md photos-select">
+        Photo 1: <%= f.file_field :photo_one, class: 'form-control pic-file' %>
+    </div>
+
+    <div class="input-group-md photos-select">
+        Photo 2: <%= f.file_field :photo_two, class: 'form-control pic-file'%>
+    </div>
+
+    <div class="input-group-md photos-select">
+        Photo 3: <%= f.file_field :photo_three, class: 'form-control pic-file'%>
+    </div>
+
+    <div class="input-group-md photos-select photo-four">
+        Photo 4: <%= f.file_field :photo_four, class: 'form-control pic-file' %>
+    </div>
+
+    <div class="input-group-lg">
+        Safety Tips: <%= f.text_field :safety_tips, class: 'form-control edit-safety' %>
+    </div>
+
+    <div class="input-group-lg">
+        Experience, Tips, Recommendations: <%= f.text_field :overall, class: 'form-control edit-overall' %>
+    </div>
+
+    <%= f.submit 'Submit Edits', class: 'btn btn-lg p-e-submit' %>
+    <% end %>
+
+  </div>
+
+</body>

@@ -1,27 +1,31 @@
-<div id="user-form">
-	<%= form_for(@user, :html => {:multipart => true}) do |f| %>
-		
-		<%= f.label "Choose an avatar image: ", :avatar %>
-		<%= f.file_field :avatar %>
+<body>
 
-		<%= f.label "Choose Photo 1: ", :avatar1 %>
-		<%= f.file_field :avatar1 %>
+  <div class="user-nav">
+    <span><%= link_to "Dashboard", user_path(current_user) %></span>
+      <span>|</span>
+    <span><%= link_to "Log Out", logout_path, 'data-no-turbolink' => false %></span>
+  </div>
 
-		<%= f.label "Choose Photo 2: ", :avatar2 %>
-		<%= f.file_field :avatar2 %>
+	<div class="col-lg-4 col-lg-offset-4" id="u-e-div">
+		<%= form_for(@user, :html => {:multipart => true}) do |f| %>
 
-		<%= f.label "Choose Photo 3: ", :avatar3 %>
-		<%= f.file_field :avatar3 %>
+			<div class="input-group-lg">
+				First Name: <%= f.text_field :first, class: 'form-control' %>
+			</div><br/>
 
-		<%= f.label "Choose Photo 4: ", :avatar4 %>
-		<%= f.file_field :avatar4 %>
+			<div class="input-group-lg">
+				Last Name: <%= f.text_field :last, class: 'form-control' %>
+			</div><br/>
 
-		<%= f.label "Choose Photo 5: ", :avatar5 %>
-		<%= f.file_field :avatar5 %>
+			<div class="input-group-lg">
+				Email Address: <%= f.text_field :email, class: 'form-control' %>
+			</div><br/>	
 
-		<%= f.label "Choose Photo 6: ", :avatar6 %>
-		<%= f.file_field :avatar6 %>
+			<div class="input-group-lg">
+				Profile Photo: <%= f.file_field :avatar, class: 'form-control' %>
+			</div><br/>
 
-		<%= f.submit "Add images!" %>
-	<% end %>
-</div>
+			<%= f.submit "Submit", class: 'btn btn-lg u-e-submit' %>
+		<% end %>
+	</div>
+</body>

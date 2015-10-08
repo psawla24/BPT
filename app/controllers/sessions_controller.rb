@@ -1,10 +1,9 @@
 class SessionsController < ApplicationController
 
   def new
-    flash.clear
+    # flash.clear
   end
 
-  
   def create
     flash.clear
   	begin
@@ -22,10 +21,9 @@ class SessionsController < ApplicationController
     end
   end
 
-
   def destroy
   	log_out
-  	redirect_to sessions_path
+  	redirect_to root_path
   end
   
 end

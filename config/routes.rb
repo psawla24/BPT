@@ -1,18 +1,25 @@
 Rails.application.routes.draw do
 
-  root :to => 'sessions#index'
+  root :to => 'users#new'
 
-  resources :users 
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy', as: :logout
 
-  resources :sessions
+  resources :users do
+    resources :posts
+  end
 
-  delete '/sessions' => 'sessions#destroy'
+  get 'posts/all', :to => 'posts#all'  
+  get 'posts/north_america', :to => 'posts#north_america'
+  get 'posts/south_america', :to => 'posts#south_america'
+  get 'posts/europe', :to => 'posts#europe'
+  get 'posts/asia', :to => 'posts#asia'
+  get 'posts/australia', :to => 'posts#australia'
+  get 'posts/africa', :to => 'posts#africa'
+  get 'posts/antarctica', :to => 'posts#antarctica'
 
-  resources :messages
-  resources :posts
-  resources :maps
-
-  get 'testout' => 'posts#new1'
+  # delete '/sessions' => 'sessions#destroy'
 
 end
  

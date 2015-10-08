@@ -1,98 +1,113 @@
+<body>
+  <% if logged_in? %>
+    <div class="u-n-nav">
+      <span><%= link_to "dashboard", user_path(current_user) %></span>
+        <span>|</span>
+      <span><%= link_to "log out", logout_path, 'data-no-turbolink' => false %></span>
+    </div>
+  <% end %>
+
+  <div id="upper-div">
+    <p id="title">BACK PACK TRACK</p>
+  </div>
+
+  <div id="lower-div">
+    <div class="info-one">
+      <div class="circle-one">
+        <img src="/assets/circle1.jpg" class="circle-img">
+        <p class="circle-text">LIKE?</p>
+      </div>
+    </div>
+    <div class="info-two">
+      <div class="circle-two">
+        <img src="/assets/circle2.jpg" class="circle-img">
+        <% if logged_in? == false %>
+        <div class="row" id="root-login-div">
+          <div class="col-md-12 text-center">
+            <button id="buttonOne" class="btn btn-default" data-toggle="modal" data-target="#signup-modal">Sign Up</button>
+            <button id="buttonTwo" class="btn btn-default" data-toggle="modal" data-target="#signin-modal">Sign In</button>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="info-three">
+      <div class="circle-three">
+        <img src="/assets/circle3.jpg" class="circle-img">
+        <p class="circle-text">LOVE?</p>
+      </div>
+    </div>
+  </div>
 
 
 <!--- SIGN UP MODAL SIGN UP MODAL SIGN UP MODAL SIGN UP MODAL SIGN UP MODAL  -->
-
-<div id="signupModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-
-<p class="signUpIn">Sign Up!</p>
-</div>
-
-<div class="modal-body">
-<%= form_for @user do |f| %>
-
-	<div class="form-group">
-	<%= f.label :first %>
-	<%= f.text_field :first, class: 'form-control', placeholder: "First Name"%>
-	</div>
-
-	<div class="form-group">
-	<%= f.label :last %>
-	<%= f.text_field :last, class: 'form-control', placeholder: "Last Name" %>
-	</div>
-
-	<div class="form-group">
-	<%= f.label :email %>
-	<%= f.text_field :email, class: 'form-control', placeholder: "Email Address" %>
-	</div>
-
-	<div class="form-group">
-	<%= f.label :password %>
-	<%= f.text_field :password, class: 'form-control', placeholder: "Password" %>
-	</div>
-
-	<div class="submitButton" id="subButt">
-	<%= f.submit 'Sign Me Up!' %>
-	</div>
-</div>
-
-	<div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button class="btn btn-default" data-toggle="modal" data-target="#signinModal" data-dismiss="modal">Existing User?</button>
+  <div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+      <p class="signUpIn-title">Sign Up</p>
     </div>
-</div>
-</div>
-</div>
 
-<% end %>
+    <div class="modal-body">
+      <%= form_for @user do |f| %>
+      <div>
+        <%= f.text_field :first, class: 'form-control', placeholder: "First Name" %>
+      </div><br/><br/>
 
+      <div>
+        <%= f.text_field :last, class: 'form-control', placeholder: "Last Name" %>
+      </div><br/><br/>
+
+      <div>
+        <%= f.text_field :email, class: 'form-control', placeholder: "Email Address" %>
+      </div><br/><br/>
+
+      <div>
+        <%= f.password_field :password, class: 'form-control', placeholder: "Password" %>
+      </div><br/><br/>
+
+      <input type="submit" class="btn btn-default btn-lg" value="Sign Up">
+    </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button class="btn btn-default" data-toggle="modal" data-target="#signin-modal" data-dismiss="modal">Existing User?</button>
+      </div>
+    </div>
+    </div>
+    <% end %>
+  </div>
 
 
 <!-- LOG IN MODAL LOG IN MODAL LOG IN MODAL LOG IN MODAL LOG IN MODAL LOG IN MODAL --> 
 
+  <div id="signin-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+      <p class="signUpIn-title">Sign In</p>
+    </div>
 
+    <div class="modal-body">
+      <%= form_for(:session, url: login_path) do |f| %>
+        <div>
+          <%= f.text_field :email, class: 'form-control', placeholder: "Email" %>
+        </div><br/><br/>
 
-<!-- PAGE ELEMENTS PAGE ELEMENTS PAGE ELEMENTS PAGE ELEMENTS PAGE ELEMENTS -->
+        <div>
+          <%= f.password_field :password, class: 'form-control', placeholder: "Password" %>
+        </div><br/><br/>
 
-<div id="theHeader">
-	<p id="title" class="signUpIn">Back <span>&#x261E</span> Pack <span>&#x261E</span> Track</p>
-</div>
+        <input type="submit" class="btn btn-default btn-lg" value="Sign In">
+    </div>
 
-<div id="theMiddle">
-		<div class="row">
-		<div class="col-lg-6 col-lg-offset-3 text-center">
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <button class="btn btn-default" data-toggle="modal" data-target="#signup-modal" data-dismiss="modal">New User?</button>
+    </div>
+    </div>
+    </div>
+    <% end %>
+  </div>
 
-			<button id="buttonOne" class="btn btn-default" data-toggle="modal" data-target="#signupModal">Sign Up</button>
-			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-			<button id="buttonTwo" class="btn btn-default" data-toggle="modal" data-target="#signinModal">Log In</button>
-
-		</div>
-		</div>
-</div>
-
-
-<div id="theFooter">
-
-		<ul>
-			<li>How It Works</li>
-
-			<li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
-
-			<li>Top Destinations</li>
-
-			<li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
-
-
-			<li>Contact Us</li>
-
-			<li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
-
-			<li>FAQ</li>
-		</ul>
-
-</div>
-
-
-
+</body>

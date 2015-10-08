@@ -13,13 +13,13 @@
  *= require_self
  */
 
+@import "bootstrap";
+
+@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500);
+
 @font-face {
     font-family: 'Glyphicons Halflings';
     src: url('/assets/glyphicons-halflings-regular.eot');
     src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
-
-@import "bootstrap";
-@import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic);
-
 
