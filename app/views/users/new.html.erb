@@ -1,9 +1,9 @@
 <body>
   <% if logged_in? %>
     <div class="u-n-nav">
-      <span><%= link_to "dashboard", user_path(current_user) %></span>
+      <span><%= link_to "Dashboard", user_path(current_user) %></span>
         <span>|</span>
-      <span><%= link_to "log out", logout_path, 'data-no-turbolink' => false %></span>
+      <span><%= link_to "Log Out", logout_path, 'data-no-turbolink' => false %></span>
     </div>
   <% end %>
 
@@ -14,13 +14,13 @@
   <div id="lower-div">
     <div class="info-one">
       <div class="circle-one">
-        <img src="/assets/circle1.jpg" class="circle-img">
+        <img src="http://s3.amazonaws.com/bpt-assets/circle1.jpg" class="circle-img">
         <p class="circle-text">LIKE?</p>
       </div>
     </div>
     <div class="info-two">
       <div class="circle-two">
-        <img src="/assets/circle2.jpg" class="circle-img">
+        <img src="http://s3.amazonaws.com/bpt-assets/circle2.jpg" class="circle-img">
         <% if logged_in? == false %>
         <div class="row" id="root-login-div">
           <div class="col-md-12 text-center">
@@ -33,7 +33,7 @@
     </div>
     <div class="info-three">
       <div class="circle-three">
-        <img src="/assets/circle3.jpg" class="circle-img">
+        <img src="http://s3.amazonaws.com/bpt-assets/circle3.jpg" class="circle-img">
         <p class="circle-text">LOVE?</p>
       </div>
     </div>

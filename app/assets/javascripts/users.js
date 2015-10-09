@@ -6,9 +6,11 @@ $(document).ready(function(){
       'url(assets/bpt1.jpg)',
       'url(assets/bpt2.jpg)',
       'url(assets/bpt3.jpg)',
-      'url(assets/bpt4.jpeg)',
+      'url(assets/bpt4.jpg)',
       'url(assets/bpt5.jpg)',
-      'url(assets/bpt6.jpg)'
+      'url(assets/bpt6.jpg)',
+      'url(assets/bpt7.jpg)',
+      'url(assets/bpt8.jpg)'
     );
 
   var current = 0;

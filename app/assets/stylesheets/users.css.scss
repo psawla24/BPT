@@ -52,14 +52,64 @@ body {
 }
 
 #title {
-	font-size: 160px;
-	font-weight: 400;
+	font-family: 'Exo' !important;
+	font-size: 11em;
+	font-weight: 700 !important;
+	letter-spacing: 8px;
 	text-align: center;
 	padding-top: 20px;
-	-webkit-background-clip:text;
-	-webkit-text-fill-color:transparent;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 	color: white;
 	background-size: contain;
+}
+
+@media (max-width: 1600px) {
+	#title {
+		font-size: 9em;
+		padding-top: 40px;
+	}
+}
+
+@media (max-width: 1300px) {
+	#title {
+		font-size: 8.5em;
+		padding-top: 40px;
+	}
+}
+
+@media (max-width: 1200px) {
+	#title {
+		font-size: 7em;
+		padding-top: 40px;
+	}
+}
+
+@media (max-width: 1000px) {
+	#title {
+		font-size: 6em;
+		padding-top: 60px;
+	}
+}
+
+@media (max-width: 800px) {
+	#title {
+		font-size: 4.5em;
+		padding-top: 80px;
+	}
+}
+
+@media (max-width: 700px) {
+	#title {
+		font-size: 3em;
+		padding-top: 100px;
+	}
+}
+
+@media (max-width: 550px) {
+	#title {
+		padding-top: 80px;
+	}
 }
 
 #lower-div {

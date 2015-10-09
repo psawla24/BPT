@@ -19,7 +19,7 @@ gem 'bcrypt', '~> 3.1.9'
 
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 
-gem 'aws-sdk'
+gem 'aws-sdk', '~> 2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
