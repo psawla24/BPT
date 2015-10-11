@@ -8,10 +8,9 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
-require "mongoid"
-## Mongoid.load!(File.expand_path('mongoid.yml', './config'))
+# require "mongoid"
 
-Mongoid.load!('config/mongoid.yml')
+# Mongoid.load!('config/mongoid.yml')
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
