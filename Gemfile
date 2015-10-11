@@ -13,13 +13,17 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
-gem 'mongoid', github: 'mongoid/mongoid'
+gem 'mongoid'
+
+gem 'mongo', '~> 2.1'
 
 gem 'bcrypt', '~> 3.1.9'
 
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 
 gem 'aws-sdk', '~> 2'
+
+gem 'moped', '~> 2.0.7'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
