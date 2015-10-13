@@ -13,9 +13,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
-gem 'mongoid'
+gem 'mongoid', '~> 4.0.0'
 
-gem 'mongo', '~> 2.1'
+# gem 'mongo', '~> 2.1'
 
 gem 'bcrypt', '~> 3.1.9'
 
