@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   	  redirect_to user_path(current_user)
     else
   	  flash[:error] ||= "Try Again!"
-  	  render 'new'
+  	  render 'users/new'
     end
   end
 
