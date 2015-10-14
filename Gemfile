@@ -55,4 +55,4 @@ gem "geocoder"
 
 gem 'rails_12factor', group: :production
 
-ruby '2.1.2'
+ruby '2.0.0'  # try changing to 2.1.2

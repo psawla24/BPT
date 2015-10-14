@@ -5,6 +5,15 @@ class User
   include Mongoid::Document
   include Mongoid::Paperclip
 
+  validates :first, presence: true
+  validates :last, presence: true
+  validates :email, presence: true
+  validates :email, format: { with: /@/,
+    message: "not a valid email" }
+  validates :password, presence: true
+  validates :password, length: { minimum: 8, 
+    message: "password must be at least 8 characters" }
+
   field :first, type: String
   field :last, type: String
   field :email, type: String

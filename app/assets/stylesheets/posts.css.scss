@@ -36,7 +36,7 @@ body {
 
 #postIndexMap {
   height: 370px;
-  width: 75%;
+  width: 81%;
   display: table;
   border-radius: 7px;
   margin: 0 auto;
@@ -44,7 +44,7 @@ body {
 }
 
 #post-index-container {
-  width: 80%;
+  width: 85%;
   display: table;
   margin: 0 auto;
 }
@@ -97,13 +97,32 @@ a:hover {
   }
 }
 
+@media (max-width: 1440px) {
+  .posts-info-div {
+    width: 29.9% !important;
+  }
+
+  .p-i-city-country {
+    font-size: 1.4em !important;
+  }
+
+  .p-i-rating {
+    font-size: 1.1em !important;
+  }
+
+  .p-i-days-ago {
+    font-size: 0.95em !important;
+  }
+}
+
+
   
 /************************** POSTS (NEW.HTML.ERB) ***************************/
 
 
 .p-n-container {
   margin-top: -55px;
-  width: 77% !important;
+  width: 84% !important;
 }
 
 .p-n-panel-heading {
@@ -199,7 +218,7 @@ a:hover {
 }
 
 .eatery-input {
-  width: 49.5%;
+  width: 49.4%;
   display: inline-block;
 }
 
@@ -246,11 +265,59 @@ a:hover {
   background-color: #444 !important;
 }
 
+@media (max-width: 1440px) {
+  .eatery-input {
+    width: 49% !important;
+  }
+  .eatery-dish-input {
+    width: 49.5% !important;
+  }
+  .sights-input {
+    width: 32.37% !important;
+    display: inline-block;
+  }
+}
+
+@media (max-width: 1200px) {
+  .eatery-input, .eatery-dish-input {
+    width: 49.5% !important;
+  }
+
+  .sights-input {
+    width: 99.8% !important;
+  }
+}
+
+@media (max-width: 1050px) {
+  .eatery-input, .eatery-dish-input {
+    width: 99.9% !important;
+  }
+
+  .sights-input {
+    width: 99.8% !important;
+  }
+
+  .p-n-title {
+    font-size: 2.4em !important;
+  }
+}
+
+@media (max-width: 550px) {
+  .city-name, .country-name {
+    width: 99.1% !important;
+  }
+
+  .p-n-title {
+    font-size: 2.1em !important;
+  }
+}
+
 
 /************************** POSTS (SHOW.HTML.ERB) ***************************/
 
+
 .p-s-container {
-  width: 70% !important;
+  width: 80% !important;
 }
 
 #city-country-rating {
@@ -303,12 +370,12 @@ a:hover {
   }
 }
 
-.image-one-div, .image-two-div, .image-three-div, .image-four-div {
+.p-s-image-div {
   display: inline-block;
   width: 24.7%;
 }
 
-.post-image-one, .post-image-two, .post-image-three, .post-image-four {
+.image-1234 {
   height: 270px;
   width: 270px;
   display: table;
@@ -344,6 +411,117 @@ a:hover {
 
 .eatery-span {
   font-weight: 500;
+}
+
+@media (max-width: 1700px) {
+  .image-1234 {
+    height: 240px !important;
+    width: 240px !important;
+  }
+
+  .p-s-image-div {
+    width: 24.5% !important;
+  }
+}
+
+@media (max-width: 1440px) {
+  .image-1234 {
+    height: 210px !important;
+    width: 210px !important;
+    border: 3px solid #222;
+  }
+
+  .p-s-city-country {
+    font-size: 2.5em !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .image-1234 {
+    height: 180px !important;
+    width: 180px !important;
+    border: 3px solid #222;
+  }
+}
+
+@media (max-width: 1050px) {
+  .image-1234 {
+    height: 160px !important;
+    width: 160px !important;
+    border: 3px solid #222;
+  }
+
+  .p-s-image-div {
+    width: 24.4% !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .image-1234 {
+    height: 140px !important;
+    width: 140px !important;
+    border: 3px solid #222;
+  }
+
+  .p-s-image-div {
+    width: 24.3% !important;
+  }
+
+  .p-s-city-country {
+    font-size: 2.1em !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .image-1234 {
+    height: 210px !important;
+    width: 210px !important;
+    border: 3px solid #222 !important;
+  }
+  .p-s-image-div {
+    width: 48% !important;
+  }
+  .post-image-one, .post-image-four {
+    float: none !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .image-1234 {
+    height: 170px !important;
+    width: 170px !important;
+    border: 2px solid #222 !important;
+  }
+
+  .p-s-city-country {
+    font-size: 1.9em !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .image-1234 {
+    height: 140px !important;
+    width: 140px !important;
+  }
+
+  .p-s-city-country {
+    font-size: 1.7em !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .image-1234 {
+    height: 120px !important;
+    width: 120px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .image-1234 {
+    height: 110px !important;
+    width: 110px !important;
+    border: 1.5px solid #222 !important;
+  }
 }
 
 
